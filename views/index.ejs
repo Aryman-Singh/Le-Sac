@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Le-Sac | Authentication</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+
+<% if(error.length>0){ %>
+  <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
+    <span class="inline-block mt-1 mb-1 text-white">
+      <%= error[0] %>
+    </span>
+  </div>
+<% } %>
+
+<body class="h-screen overflow-hidden relative flex items-center justify-center">
+
+  <div class="absolute inset-0 bg-gradient-to-br from-[#2563eb] via-[#93c5fd] to-[#ffffff]"></div>
+  <div class="absolute inset-0 bg-white/20"></div>
+
+  <div class="relative z-10 w-full max-w-6xl px-6">
+    <div class="h-[85vh] bg-white rounded-[36px]
+                shadow-[0_50px_120px_rgba(37,99,235,0.25)]
+                grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+
+      <!-- LOGIN -->
+      <div class="flex flex-col justify-center px-14">
+        <h1 class="text-4xl font-semibold tracking-tight text-[#1e3a8a] mb-4">
+          Welcome Back
+        </h1>
+        <p class="text-[#475569] mb-10 max-w-sm">
+          Sign in to explore Le-Sac’s premium collection
+        </p>
+
+        <form action="/users/login" method="post" class="space-y-6 max-w-sm">
+          <div>
+            <label class="block text-sm text-[#334155] mb-2">Email</label>
+            <input name="email" type="email"
+              class="w-full h-12 px-4 rounded-xl border border-[#c7d2fe]
+              focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+          </div>
+
+          <div>
+            <label class="block text-sm text-[#334155] mb-2">Password</label>
+            <input name="password" type="password"
+              class="w-full h-12 px-4 rounded-xl border border-[#c7d2fe]
+              focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+          </div>
+
+          <input type="submit"
+            class="w-full h-12 bg-[#2563eb] text-white rounded-xl
+            hover:bg-[#1d4ed8] transition">
+        </form>
+
+        <!-- ADMIN LOGIN BUTTON -->
+        <div class="mt-6 max-w-sm">
+          <a href="/adminlogin"
+             class="block text-center w-full h-12 leading-[3rem]
+                    border border-[#2563eb] text-[#2563eb]
+                    rounded-xl hover:bg-[#2563eb] hover:text-white transition">
+            Admin Login
+          </a>
+        </div>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="flex flex-col justify-center px-14
+                  bg-gradient-to-br from-[#1e3a8a] via-[#2563eb] to-[#3b82f6] text-white">
+
+        <h1 class="text-4xl font-semibold tracking-tight mb-4">
+          Create Account
+        </h1>
+        <p class="text-blue-100 mb-10 max-w-sm">
+          Join Le-Sac and experience timeless craftsmanship
+        </p>
+
+        <form action="/users/register" method="post" class="space-y-6 max-w-sm">
+          <div>
+            <label class="block text-sm mb-2">Full Name</label>
+            <input name="fullname" type="text"
+              class="w-full h-12 px-4 rounded-xl bg-white/10 border border-white/30
+              focus:outline-none focus:ring-2 focus:ring-white">
+          </div>
+
+          <div>
+            <label class="block text-sm mb-2">Email</label>
+            <input name="email" type="email"
+              class="w-full h-12 px-4 rounded-xl bg-white/10 border border-white/30
+              focus:outline-none focus:ring-2 focus:ring-white">
+          </div>
+
+          <div>
+            <label class="block text-sm mb-2">Password</label>
+            <input name="password" type="password"
+              class="w-full h-12 px-4 rounded-xl bg-white/10 border border-white/30
+              focus:outline-none focus:ring-2 focus:ring-white">
+          </div>
+
+          <button
+            class="w-full h-12 bg-white text-[#2563eb] rounded-xl
+            hover:bg-blue-50 transition">
+            Register
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Le-Sac | Cart</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-[#f8fafc] via-[#e0e7ff] to-[#ffffff]">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+      <h1 class="text-2xl font-semibold text-[#1e3a8a] tracking-tight">
+        Le-Sac
+      </h1>
+
+      <nav class="flex gap-8 text-slate-600">
+        <a href="/shop" class="hover:text-[#1e3a8a] transition">Shop</a>
+        <a href="#" class="hover:text-[#1e3a8a] transition">Collections</a>
+        <a href="#" class="hover:text-[#1e3a8a] transition">About</a>
+        <a href="" class="text-[#1e3a8a] font-medium">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CART SECTION -->
+  <section class="max-w-7xl mx-auto px-8 py-16">
+    <h2 class="text-4xl font-semibold tracking-tight text-[#1e3a8a] mb-10">
+      Your Cart
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+      <!-- CART ITEMS -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- ITEM -->
+        <% user.cart.forEach(item => { %>
+        <div class="flex gap-6 bg-white rounded-3xl p-6 shadow-lg">
+          <div class="w-32 h-32 bg-slate-100 rounded-2xl overflow-hidden">
+            <img src="data:image/jpeg;base64,<%= item.image.toString('base64') %>" class="w-full h-full object-cover" alt="">
+          </div>
+
+          <div class="flex-1">
+            <h3 class="text-lg font-semibold text-slate-800">
+              <%= item.name %>
+            </h3>
+            <p class="text-slate-500 mt-1">$<%= item.price %></p>
+
+            <div class="mt-4 flex items-center gap-4">
+              <button class="px-3 py-1 rounded-lg bg-slate-200 hover:bg-slate-300">−</button>
+              <span class="font-medium">1</span>
+              <button class="px-3 py-1 rounded-lg bg-slate-200 hover:bg-slate-300">+</button>
+
+              <button class="ml-auto text-red-500 hover:text-red-600 text-sm">
+                Remove
+              </button>
+            </div>
+          </div>
+
+          <div class="text-lg font-semibold text-[#1e3a8a]">
+            $<%= item.price %>
+          </div>
+        </div>
+        <% }); %>
+
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="bg-white rounded-3xl p-8 shadow-xl h-fit">
+        <h3 class="text-xl font-semibold text-slate-800 mb-6">
+          Order Summary
+        </h3>
+
+        <div class="flex justify-between text-slate-600 mb-4">
+          <span>Subtotal</span>
+          <span>$<%= user.cart.reduce((total, item) => total + item.price, 0) %></span>
+        </div>
+
+        <div class="flex justify-between text-slate-600 mb-6">
+          <span>Shipping</span>
+          <span>Free</span>
+        </div>
+
+        <div class="border-t pt-4 flex justify-between text-lg font-semibold text-[#1e3a8a]">
+          <span>Total</span>
+          <span>$<%= user.cart.reduce((total, item) => total + item.price, 0) %></span>
+        </div>
+
+        <button class="w-full mt-8 py-4 rounded-xl bg-[#1e3a8a] text-white hover:bg-[#1d4ed8] transition">
+          Checkout
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 mt-20">
+    <div class="max-w-7xl mx-auto px-8 py-10 text-sm text-slate-500 flex justify-between">
+      <span>© 2026 Le-Sac</span>
+      <span>Crafted with precision</span>
+    </div>
+  </footer>
+
+</body>
+</html>

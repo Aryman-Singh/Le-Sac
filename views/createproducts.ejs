@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Le-Sac | Admin Products</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body class="h-screen overflow-hidden flex items-center justify-center
+bg-gradient-to-br from-[#1e3a8a] via-[#3b82f6] to-[#f8fafc]">
+
+  <div class="absolute inset-0 bg-white/30"></div>
+
+  <div class="relative z-10 w-full max-w-7xl px-8">
+    <div class="h-[90vh] bg-white rounded-[32px]
+                shadow-[0_60px_140px_rgba(30,58,138,0.25)]
+                grid grid-cols-1 lg:grid-cols-4 overflow-hidden">
+
+      <!-- Sidebar -->
+      <div class="col-span-1 bg-[#0f172a] text-white p-10 flex flex-col">
+        <h1 class="text-2xl font-semibold tracking-tight mb-12">
+          Le-Sac Admin
+        </h1>
+
+        <nav class="space-y-4">
+          <button class="w-full text-left px-5 py-3 rounded-xl
+                         bg-white/10 hover:bg-white/20 transition">
+            All Products
+          </button>
+
+          <button class="w-full text-left px-5 py-3 rounded-xl
+                         bg-blue-600 hover:bg-blue-500 transition">
+            Create Product
+          </button>
+        </nav>
+
+        <div class="mt-auto text-sm text-slate-400">
+          © Le-Sac Admin
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-span-3 p-12 overflow-y-auto">
+        <h1 class="text-4xl font-semibold tracking-tight text-[#1e3a8a] mb-12">
+          Create Product
+        </h1>
+
+        <form enctype="multipart/form-data" action="/products/create" method="POST" class="space-y-10 max-w-4xl">
+
+          <!-- Image -->
+          <div>
+            <label class="block text-sm text-slate-600 mb-3">
+              Product Image
+            </label>
+            <div class="h-48 rounded-2xl border-2 border-dashed border-blue-300
+                        flex items-center justify-center text-slate-500">
+              <input type="file" name="image">
+            </div>
+          </div>
+
+          <!-- Name -->
+          <div>
+            <label class="block text-sm text-slate-600 mb-2">
+              Product Name
+            </label>
+            <input type="text" name="name"
+              class="w-full h-12 px-4 rounded-xl border border-blue-200
+              focus:outline-none focus:ring-2 focus:ring-blue-600">
+          </div>
+
+          <!-- Price & Discount -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <label class="block text-sm text-slate-600 mb-2">
+                Product Price
+              </label>
+              <input type="number" name="price"
+                class="w-full h-12 px-4 rounded-xl border border-blue-200
+                focus:outline-none focus:ring-2 focus:ring-blue-600">
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-600 mb-2">
+                Discount (%)
+              </label>
+              <input type="number" name="discount"
+                class="w-full h-12 px-4 rounded-xl border border-blue-200
+                focus:outline-none focus:ring-2 focus:ring-blue-600">
+            </div>
+          </div>
+
+          <!-- Colors -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <label class="block text-sm text-slate-600 mb-2">
+                Product Card Background Color
+              </label>
+              <input type="text" name="bgcolor" placeholder="#f8fafc or rgb(30,58,138)"
+                class="w-full h-12 px-4 rounded-xl border border-blue-200
+                focus:outline-none focus:ring-2 focus:ring-blue-600">
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-600 mb-2">
+                Product Text Color
+              </label>
+              <input type="text" name="textcolor" placeholder="#0f172a or white"
+                class="w-full h-12 px-4 rounded-xl border border-blue-200
+                focus:outline-none focus:ring-2 focus:ring-blue-600">
+            </div>
+
+            <div>
+              <label class="block text-sm text-slate-600 mb-2">
+                Product Panel Color
+              </label>
+              <input type="text" name="panelcolor" placeholder="#1e3a8a or rgb(15,23,42)"
+                class="w-full h-12 px-4 rounded-xl border border-blue-200
+                focus:outline-none focus:ring-2 focus:ring-blue-600">
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-8 flex gap-6">
+            <button
+              class="h-12 px-10 bg-[#1e3a8a] text-white rounded-xl
+              hover:bg-[#1d4ed8] transition">
+              Publish Product
+            </button>
+
+            <button
+              class="h-12 px-10 border border-blue-300 text-[#1e3a8a]
+              rounded-xl hover:bg-blue-50 transition">
+              Save Draft
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

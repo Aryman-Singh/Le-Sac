@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Le-Sac | Admin Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+
+<body class="h-screen overflow-hidden relative flex items-center justify-center">
+
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[#2563eb] via-[#93c5fd] to-[#ffffff]"></div>
+  <div class="absolute inset-0 bg-white/20"></div>
+
+  <!-- Card -->
+  <div class="relative z-10 w-full max-w-md px-6">
+    <div class="bg-white rounded-[36px]
+                shadow-[0_50px_120px_rgba(37,99,235,0.25)]
+                px-10 py-12">
+
+      <h1 class="text-3xl font-semibold tracking-tight text-[#1e3a8a] mb-2">
+        Admin Login
+      </h1>
+      <p class="text-[#475569] mb-8">
+        Authorized personnel only
+      </p>
+
+      <form action="/owners/adminLogin" method="post" class="space-y-6">
+        <% if (typeof error !== 'undefined' && error.length > 0) { %>
+          <div class="p-4 mb-4 rounded-lg bg-red-100 text-red-800">
+            <%= error[0] %>
+          </div>
+        <% } %>
+        <div>
+          <label class="block text-sm text-[#334155] mb-2">Admin Email</label>
+          <input name="email" type="email" required
+            class="w-full h-12 px-4 rounded-xl border border-[#c7d2fe]
+            focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+        </div>
+
+        <div>
+          <label class="block text-sm text-[#334155] mb-2">Password</label>
+          <input name="password" type="password" required
+            class="w-full h-12 px-4 rounded-xl border border-[#c7d2fe]
+            focus:outline-none focus:ring-2 focus:ring-[#2563eb]">
+        </div>
+
+        <button
+          class="w-full h-12 bg-[#2563eb] text-white rounded-xl
+                 hover:bg-[#1d4ed8] transition">
+          Login as Admin
+        </button>
+      </form>
+
+      <!-- Back to User Login -->
+      <div class="mt-8 text-center">
+        <a href="/"
+           class="text-sm text-[#2563eb] hover:underline">
+          ← Back to User Login
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
